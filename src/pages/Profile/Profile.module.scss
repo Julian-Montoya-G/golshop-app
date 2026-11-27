@@ -1,0 +1,331 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  padding: 40px 20px 24px;
+  text-align: center;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba($primary, 0.07) 0 36px,
+    transparent 36px 72px
+  );
+}
+
+.avatarWrap {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  margin: 0 auto;
+}
+
+.avatarRing {
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  border-radius: 50%;
+  background: $gradient-gold;
+  box-shadow: $shadow-gold;
+  box-sizing: border-box;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: $card;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  span {
+    color: $gold;
+    font-family: $font-display;
+    font-size: 2.25rem;
+    font-weight: 800;
+  }
+}
+
+.camBtn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 4px solid $background;
+  border-radius: 50%;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  box-shadow: $shadow-glow;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.name {
+  @include display-title;
+  margin: 16px 0 0;
+  font-size: 1.875rem;
+}
+
+.email {
+  margin: 4px 0 0;
+  color: $muted-foreground;
+  font-size: 0.875rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba($gold, 0.15);
+  color: $gold;
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  ion-icon {
+    font-size: 14px;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.stat {
+  padding: 12px 0;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: rgba($card, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.statValue {
+  margin: 0;
+  color: $primary;
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.statLabel {
+  margin: 0;
+  color: $muted-foreground;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 20px 24px;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid $border;
+  border-radius: 24px;
+  background: $card;
+}
+
+.cardTitle {
+  margin: 0 0 8px;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.addressRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.textarea {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: $surface;
+  color: $foreground;
+  font-family: inherit;
+  font-size: 0.875rem;
+  resize: none;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+}
+
+.pin {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 16px;
+  background: $gradient-gold;
+  color: $gold-foreground;
+  box-shadow: $shadow-gold;
+  font-size: 22px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+}
+
+.addressActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.mapBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: $surface;
+  color: $foreground;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.saveBtn {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.links {
+  overflow: hidden;
+  border: 1px solid $border;
+  border-radius: 24px;
+  background: $card;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  border-bottom: 1px solid $border;
+  background: transparent;
+  color: $foreground;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.linkIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba($primary, 0.15);
+  color: $primary;
+  font-size: 20px;
+}
+
+.linkIconGold {
+  background: rgba($gold, 0.15);
+  color: $gold;
+}
+
+.linkLabel {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.linkHint {
+  color: $muted-foreground;
+  font-size: 0.75rem;
+}
+
+.chevron {
+  color: $muted-foreground;
+  font-size: 16px;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 56px;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: $surface;
+  color: $destructive;
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  ion-icon {
+    font-size: 20px;
+  }
+}

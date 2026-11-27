@@ -22,8 +22,11 @@ import '@fontsource/barlow-condensed/800-italic.css'
 
 import './styles/global.scss'
 import App from './App.jsx'
+import { defineCustomElements } from '@ionic/pwa-elements/loader'
+
 
 setupIonicReact()
+defineCustomElements(window)
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
