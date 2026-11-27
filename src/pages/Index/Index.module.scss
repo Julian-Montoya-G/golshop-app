@@ -1,0 +1,300 @@
+@use '../../styles/variables' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 20px 0;
+}
+
+.bell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: $surface;
+  color: $foreground;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bellDot {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $gold;
+}
+
+.greeting {
+  padding: 20px 20px 0;
+}
+
+.hello {
+  margin: 0;
+  font-size: 0.875rem;
+  color: $muted-foreground;
+}
+
+.headline {
+  @include display-title;
+  margin: 0;
+  font-size: 1.875rem;
+  line-height: 1.1;
+}
+
+.accent {
+  color: $primary;
+}
+
+.search {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 16px 20px 12px;
+  background: rgba($background, 0.85);
+  backdrop-filter: blur(16px);
+}
+
+.searchBox {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: $muted-foreground;
+  pointer-events: none;
+}
+
+.optionsIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: $primary;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  height: 48px;
+  padding: 0 48px;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: $surface;
+  color: $foreground;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $muted-foreground;
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.25);
+  }
+}
+
+.clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: $muted-foreground;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  margin: 12px -20px 0;
+  padding: 0 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.chip {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid $border;
+  border-radius: 999px;
+  background: $surface;
+  color: $muted-foreground;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chipActive {
+  border-color: transparent;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  box-shadow: $shadow-glow;
+}
+
+.chipGold {
+  height: 32px;
+  min-width: 40px;
+  padding: 0 12px;
+}
+
+.chipGoldActive {
+  border-color: transparent;
+  background: $gradient-gold;
+  color: $gold-foreground;
+}
+
+.sizeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sizeLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $muted-foreground;
+}
+
+.promo {
+  display: flex;
+  align-items: center;
+  margin: 8px 20px 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background: $gradient-pitch;
+  box-shadow: $shadow-glow;
+}
+
+.promoText {
+  flex: 1;
+  padding: 20px;
+  color: $primary-foreground;
+}
+
+.promoKicker {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.promoOff {
+  @include display-title;
+  margin: 0;
+  font-size: 1.875rem;
+}
+
+.promoSub {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.promoArt {
+  flex-shrink: 0;
+  width: 128px;
+  height: 128px;
+  transform: rotate(-6deg);
+}
+
+.section {
+  padding: 20px 20px 24px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.count {
+  font-size: 0.75rem;
+  color: $muted-foreground;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.state {
+  margin: 24px 0;
+  text-align: center;
+  color: $muted-foreground;
+}
+
+.empty {
+  padding: 48px 24px;
+  border: 1px dashed $border;
+  border-radius: 24px;
+  text-align: center;
+}
+
+.emptyTitle {
+  @include display-title;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.emptyText {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: $muted-foreground;
+}
+
+.emptyLink {
+  margin-top: 16px;
+  border: 0;
+  background: transparent;
+  color: $primary;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}

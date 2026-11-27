@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid $border;
+  border-radius: 24px;
+  background: $card;
+  box-shadow: $shadow-card;
+  cursor: pointer;
+  animation: rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  padding: 16px;
+  background: radial-gradient(90% 70% at 50% 35%, #22562c, $card);
+  box-sizing: border-box;
+}
+
+.badge {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: $gradient-gold;
+  color: $gold-foreground;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.rating {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba($background, 0.7);
+  backdrop-filter: blur(8px);
+  font-size: 10px;
+  font-weight: 600;
+
+  ion-icon {
+    font-size: 12px;
+    color: $gold;
+  }
+}
+
+.info {
+  padding: 10px 12px 12px;
+}
+
+.team {
+  margin: 0;
+  overflow: hidden;
+  color: $primary;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.name {
+  margin: 0;
+  overflow: hidden;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price {
+  margin: 6px 0 0;
+  color: $gold;
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
