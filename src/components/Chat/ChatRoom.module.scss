@@ -1,0 +1,230 @@
+@use '../../styles/variables' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px 12px;
+  background: rgba($background, 0.8);
+  backdrop-filter: blur(16px);
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: $surface;
+  color: $foreground;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $gradient-gold;
+  color: $gold-foreground;
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.headerText {
+  min-width: 0;
+}
+
+.title {
+  @include display-title;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.25rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: $primary;
+  font-size: 0.75rem;
+}
+
+.body {
+  padding: 0 20px 16px;
+}
+
+.state {
+  padding: 40px 0;
+  text-align: center;
+  color: $muted-foreground;
+  font-size: 0.875rem;
+}
+
+.day {
+  margin: 20px 0 12px;
+  text-align: center;
+  color: $muted-foreground;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+  animation: rise 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.rowMine {
+  justify-content: flex-end;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bubble {
+  max-width: 78%;
+  padding: 10px 16px;
+  border-radius: 24px;
+  box-shadow: $shadow-card;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.bubbleMine {
+  border-bottom-right-radius: 6px;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+}
+
+.bubbleOther {
+  border: 1px solid $border;
+  border-bottom-left-radius: 6px;
+  background: $card;
+  color: $foreground;
+}
+
+.text {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.time {
+  margin: 4px 0 0;
+  text-align: right;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.composer {
+  padding: 8px 16px;
+  background: $background;
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.chip {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border: 1px solid $border;
+  border-radius: 999px;
+  background: rgba($card, 0.9);
+  color: $muted-foreground;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sendError {
+  margin: 0 0 8px;
+  color: $destructive;
+  font-size: 0.75rem;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 20px;
+  border: 1px solid $border;
+  border-radius: 999px;
+  background: $surface;
+  box-shadow: $shadow-card;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: $foreground;
+  font-family: inherit;
+  font-size: 0.875rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $muted-foreground;
+  }
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  box-shadow: $shadow-glow;
+  font-size: 20px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}

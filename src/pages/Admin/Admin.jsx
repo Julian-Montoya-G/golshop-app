@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   IonPage,
   IonHeader,
@@ -14,6 +15,7 @@ import { db } from '../../helpers/firebase'
 import { PRODUCTS } from '../../helpers/golshopData'
 
 export default function Admin() {
+  const navigate = useNavigate()
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
 
@@ -45,7 +47,10 @@ export default function Admin() {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonButton expand="block" onClick={seedProducts} disabled={busy}>
+        <IonButton expand="block" onClick={() => navigate('/admin/chats')}>
+          Bandeja de chats
+        </IonButton>
+        <IonButton expand="block" fill="outline" onClick={seedProducts} disabled={busy}>
           {busy ? 'Cargando...' : 'Cargar productos de ejemplo'}
         </IonButton>
         {message && <p>{message}</p>}
