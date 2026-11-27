@@ -18,8 +18,12 @@ export default function Profile() {
         <h2>{user?.displayName}</h2>
         <p>{user?.email}</p>
 
+        <IonButton expand="block" onClick={() => navigate('/orders')}>
+          Mis pedidos
+        </IonButton>
+
         {role === 'admin' && (
-          <IonButton expand="block" onClick={() => navigate('/admin')}>
+          <IonButton expand="block" color="secondary" onClick={() => navigate('/admin')}>
             Panel de administración
           </IonButton>
         )}

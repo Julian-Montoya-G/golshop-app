@@ -1,9 +1,19 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IonPage, IonContent, IonIcon, useIonToast } from '@ionic/react'
-import { trashOutline, add, remove, bagOutline, carOutline } from 'ionicons/icons'
+import {
+  trashOutline,
+  add,
+  remove,
+  bagOutline,
+  carOutline,
+  checkmarkCircle,
+} from 'ionicons/icons'
 import ProductArt from '../../components/Shared/ProductArt'
 import Menu from '../../components/Shared/Menu'
+import { useAuth } from '../../hooks/useAuth'
 import { useCart } from '../../hooks/useCart'
+import { createOrder } from '../../helpers/orders'
 import { FREE_SHIPPING_FROM, formatCOP } from '../../helpers/golshopData'
 import styles from './Cart.module.scss'
 
@@ -17,18 +27,66 @@ function Row({ label, value }) {
 }
 
 export default function Cart() {
-  const { lines, cartCount, subtotal, shipping, total, setQty, removeFromCart } = useCart()
+  const { user } = useAuth()
+  const { lines, cartCount, subtotal, shipping, total, setQty, removeFromCart, clearCart } =
+    useCart()
   const navigate = useNavigate()
   const [present] = useIonToast()
+  const [buying, setBuying] = useState(false)
+  const [orderNumber, setOrderNumber] = useState(null)
 
   const missingForFree = Math.max(0, FREE_SHIPPING_FROM - subtotal)
 
-  const handleBuy = () => {
-    present({
-      message: 'El pago se conecta en el siguiente módulo.',
-      duration: 2000,
-      position: 'top',
-    })
+  const handleBuy = async () => {
+    setBuying(true)
+    try {
+      const order = await createOrder({ user, lines })
+      await clearCart()
+      setOrderNumber(order.number)
+    } catch (e) {
+      // Los errores que lanzamos nosotros traen un mensaje claro; los de Firebase, no
+      const known =
+        e instanceof Error && !e.code && !e.message.startsWith('Firebase')
+          ? e.message
+          : 'No se pudo completar la compra. Intenta de nuevo.'
+      present({ message: known, duration: 3000, color: 'danger', position: 'top' })
+    } finally {
+      setBuying(false)
+    }
+  }
+
+  if (orderNumber) {
+    return (
+      <IonPage>
+        <IonContent>
+          <div className={styles.success}>
+            <span className={styles.successIcon}>
+              <IonIcon icon={checkmarkCircle} />
+            </span>
+            <h1 className={styles.successTitle}>¡Golazo!</h1>
+            <p className={styles.successText}>
+              Tu pedido <strong>{orderNumber}</strong> fue confirmado. Te avisaremos cuando salga
+              para tu casa.
+            </p>
+            <button
+              type="button"
+              className={styles.primaryBtn}
+              onClick={() => navigate('/orders', { replace: true })}
+            >
+              Ver mis pedidos
+            </button>
+            <button
+              type="button"
+              className={styles.ghostBtn}
+              onClick={() => navigate('/home', { replace: true })}
+            >
+              Seguir comprando
+            </button>
+          </div>
+        </IonContent>
+        <Menu />
+      </IonPage>
+    )
   }
 
   return (
@@ -133,8 +191,13 @@ export default function Cart() {
                 <span className={styles.totalLabel}>Total</span>
                 <span className={styles.totalValue}>{formatCOP(total)}</span>
               </div>
-              <button type="button" className={styles.primaryBtn} onClick={handleBuy}>
-                Comprar · {formatCOP(total)}
+              <button
+                type="button"
+                className={styles.primaryBtn}
+                onClick={handleBuy}
+                disabled={buying}
+              >
+                {buying ? 'Procesando…' : `Comprar · ${formatCOP(total)}`}
               </button>
             </section>
           </div>

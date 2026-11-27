@@ -1,0 +1,239 @@
+@use '../../styles/variables' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px 12px;
+  background: rgba($background, 0.8);
+  backdrop-filter: blur(16px);
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: $surface;
+  color: $foreground;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.title {
+  @include display-title;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+}
+
+.body {
+  padding: 0 20px 24px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 4px;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: $card;
+}
+
+.tab {
+  height: 40px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: $muted-foreground;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabActive {
+  background: $surface;
+  color: $foreground;
+}
+
+.state {
+  padding: 48px 0;
+  text-align: center;
+  color: $muted-foreground;
+  font-size: 0.875rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid $border;
+  border-radius: 24px;
+  background: $card;
+  box-shadow: $shadow-card;
+  animation: rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.number {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+.date {
+  margin: 0;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  ion-icon {
+    font-size: 14px;
+  }
+}
+
+.statusDone {
+  background: rgba($primary, 0.15);
+  color: $primary;
+}
+
+.statusShip {
+  background: rgba($info, 0.15);
+  color: $info;
+}
+
+.statusPrep {
+  background: rgba($gold, 0.15);
+  color: $gold;
+}
+
+.statusCancel {
+  background: rgba($destructive, 0.15);
+  color: $destructive;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.thumb {
+  width: 56px;
+  height: 56px;
+  padding: 6px;
+  border-radius: 12px;
+  background: radial-gradient(90% 70% at 50% 35%, #22562c, $card);
+  box-sizing: border-box;
+}
+
+.itemsText {
+  flex: 1;
+  margin: 0 0 0 4px;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+
+  span {
+    display: block;
+  }
+}
+
+.total {
+  margin: 0;
+  color: $gold;
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.progress {
+  margin-top: 16px;
+}
+
+.bar {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: $surface;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  background: $gradient-pitch;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: $muted-foreground;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stepOn {
+  color: $primary;
+}
+
+.delivered {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 0;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+
+  ion-icon {
+    color: $primary;
+    font-size: 16px;
+  }
+}
