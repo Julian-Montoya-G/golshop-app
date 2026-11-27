@@ -10,3 +10,13 @@ export function getAuthErrorMessage(code) {
   }
   return messages[code] || 'Ocurrió un error. Intenta de nuevo.'
 }
+
+export function formatDate(timestamp) {
+  const date = timestamp?.toDate?.()
+  if (!date) return ''
+  return new Intl.DateTimeFormat('es-CO', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  }).format(date)
+}
