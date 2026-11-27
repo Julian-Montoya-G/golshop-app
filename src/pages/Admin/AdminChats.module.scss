@@ -1,0 +1,104 @@
+@use '../../styles/variables' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px 12px;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: $surface;
+  color: $foreground;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.title {
+  @include display-title;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 20px 24px;
+}
+
+.state {
+  padding: 40px 0;
+  text-align: center;
+  color: $muted-foreground;
+  font-size: 0.875rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid $border;
+  border-radius: 20px;
+  background: $card;
+  color: $foreground;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $gradient-gold;
+  color: $gold-foreground;
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.info {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.last {
+  overflow: hidden;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.time {
+  flex-shrink: 0;
+  color: $muted-foreground;
+  font-size: 0.6875rem;
+}

@@ -20,3 +20,9 @@ export function formatDate(timestamp) {
     year: 'numeric',
   }).format(date)
 }
+
+export function formatTime(timestamp) {
+  const date = timestamp?.toDate?.()
+  if (!date) return ''
+  return new Intl.DateTimeFormat('es-CO', { hour: 'numeric', minute: '2-digit' }).format(date)
+}
