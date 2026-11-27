@@ -1,0 +1,43 @@
+// Paleta "estadio de noche" tomada del prototipo de Lovable
+$backdrop: #020503;
+$background: #060f0a;
+$foreground: #f2f7f0;
+$card: #0e1a14;
+$surface: #15241c;
+$accent: #1a3123;
+$secondary: #18281f;
+
+$primary: #41ca51;
+$primary-glow: #7ce963;
+$primary-foreground: #021406;
+
+$gold: #f3be4f;
+$gold-light: #fddb7c;
+$gold-dark: #d58d25;
+$gold-foreground: #201301;
+
+$info: #53b6eb;
+$destructive: #f4514f;
+$muted-foreground: #94a396;
+$border: rgba(255, 255, 255, 0.08);
+
+$radius: 1rem;
+
+$font-display: 'Barlow Condensed', system-ui, sans-serif;
+$font-sans: 'Barlow', system-ui, sans-serif;
+
+$gradient-pitch: linear-gradient(135deg, $primary-glow, $primary);
+$gradient-gold: linear-gradient(135deg, $gold-light, $gold 55%, $gold-dark);
+
+$shadow-glow: 0 10px 30px -10px rgba($primary, 0.7);
+$shadow-gold: 0 8px 24px -10px rgba($gold, 0.7);
+$shadow-card: 0 12px 30px -18px rgba(0, 0, 0, 0.8);
+
+// Títulos en estilo "marcador deportivo"
+@mixin display-title {
+  font-family: $font-display;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  line-height: 1;
+}

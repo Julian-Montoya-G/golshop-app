@@ -1,0 +1,69 @@
+@use './variables' as *;
+
+:root {
+  color-scheme: dark;
+
+  --ion-font-family: #{$font-sans};
+  --ion-background-color: #{$background};
+  --ion-background-color-rgb: 6, 15, 10;
+  --ion-text-color: #{$foreground};
+  --ion-text-color-rgb: 242, 247, 240;
+  --ion-border-color: #{$border};
+
+  // Verde césped (primary)
+  --ion-color-primary: #{$primary};
+  --ion-color-primary-rgb: 65, 202, 81;
+  --ion-color-primary-contrast: #{$primary-foreground};
+  --ion-color-primary-contrast-rgb: 2, 20, 6;
+  --ion-color-primary-shade: #39b247;
+  --ion-color-primary-tint: #54cf62;
+
+  // Dorado (secondary)
+  --ion-color-secondary: #{$gold};
+  --ion-color-secondary-rgb: 243, 190, 79;
+  --ion-color-secondary-contrast: #{$gold-foreground};
+  --ion-color-secondary-contrast-rgb: 32, 19, 1;
+  --ion-color-secondary-shade: #d6a745;
+  --ion-color-secondary-tint: #f4c560;
+
+  // Azul informativo (tertiary)
+  --ion-color-tertiary: #{$info};
+  --ion-color-tertiary-rgb: 83, 182, 235;
+  --ion-color-tertiary-contrast: #021406;
+  --ion-color-tertiary-contrast-rgb: 2, 20, 6;
+  --ion-color-tertiary-shade: #49a0cf;
+  --ion-color-tertiary-tint: #64bded;
+
+  // Error (danger)
+  --ion-color-danger: #{$destructive};
+  --ion-color-danger-rgb: 244, 81, 79;
+  --ion-color-danger-contrast: #fff6f5;
+  --ion-color-danger-contrast-rgb: 255, 246, 245;
+  --ion-color-danger-shade: #d74746;
+  --ion-color-danger-tint: #f56261;
+
+  // Componentes
+  --ion-toolbar-background: #{$background};
+  --ion-toolbar-color: #{$foreground};
+  --ion-item-background: #{$card};
+  --ion-card-background: #{$card};
+  --ion-tab-bar-background: #{$card};
+  --ion-tab-bar-color: #{$muted-foreground};
+  --ion-tab-bar-color-selected: #{$primary};
+}
+
+html,
+body {
+  background: $backdrop;
+}
+
+// Marco móvil de 390px que se centra en pantallas grandes (como el prototipo)
+ion-app {
+  max-width: 390px;
+  margin: 0 auto;
+  box-shadow: $shadow-card;
+}
+
+ion-content {
+  --background: #{$background};
+}
