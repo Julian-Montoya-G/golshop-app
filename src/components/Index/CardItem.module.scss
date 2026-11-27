@@ -97,3 +97,26 @@
   font-size: 1.25rem;
   font-weight: 700;
 }
+
+.add {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  box-shadow: $shadow-glow;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.15s;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

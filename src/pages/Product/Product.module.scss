@@ -1,0 +1,345 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 0 0 40px 40px;
+  background:
+    repeating-linear-gradient(90deg, rgba($primary, 0.07) 0 36px, transparent 36px 72px),
+    radial-gradient(90% 70% at 50% 35%, #22562c, $card);
+}
+
+.topBar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 20px 0;
+}
+
+.glassBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: rgba($background, 0.6);
+  backdrop-filter: blur(8px);
+  color: $foreground;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.liked {
+  color: $gold;
+}
+
+.heroArt {
+  position: absolute;
+  inset: 80px 40px 32px;
+}
+
+.badge {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: $gradient-gold;
+  color: $gold-foreground;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.content {
+  padding: 24px 20px 24px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.titleBox {
+  min-width: 0;
+}
+
+.team {
+  margin: 0;
+  color: $primary;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.name {
+  @include display-title;
+  margin: 4px 0 0;
+  font-size: 1.875rem;
+}
+
+.rating {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: $surface;
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  ion-icon {
+    color: $gold;
+  }
+}
+
+.description {
+  margin: 12px 0 0;
+  color: $muted-foreground;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.sizes {
+  margin-top: 24px;
+}
+
+.sizesHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.sizesTitle {
+  margin: 0;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stock {
+  color: $muted-foreground;
+  font-size: 0.75rem;
+}
+
+.sizeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sizeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: $surface;
+  color: $foreground;
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:disabled {
+    opacity: 0.4;
+    color: $muted-foreground;
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+}
+
+.sizeActive {
+  border-color: transparent;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  box-shadow: $shadow-glow;
+}
+
+.perks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.perk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: $card;
+
+  ion-icon {
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+
+  p {
+    margin: 0;
+    color: $muted-foreground;
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+
+  strong {
+    display: block;
+    color: $foreground;
+    font-weight: 600;
+  }
+}
+
+.perkGreen {
+  color: $primary;
+}
+
+.perkGold {
+  color: $gold;
+}
+
+.seller {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid $border;
+  border-radius: 16px;
+  background: $card;
+  color: $foreground;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+.sellerAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $gradient-gold;
+  color: $gold-foreground;
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.sellerInfo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+
+  strong {
+    color: $foreground;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
+
+.footer {
+  padding: 0 16px 16px;
+  background: $background;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 12px 12px 20px;
+  border: 1px solid $border;
+  border-radius: 24px;
+  background: rgba($card, 0.95);
+  box-shadow: $shadow-card;
+}
+
+.oldPrice {
+  margin: 0;
+  color: $muted-foreground;
+  font-size: 0.75rem;
+  text-decoration: line-through;
+}
+
+.price {
+  margin: 0;
+  color: $gold;
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.addBtn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 56px;
+  border: 0;
+  border-radius: 16px;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  box-shadow: $shadow-glow;
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.notFound {
+  display: flex;
+  min-height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.notFoundTitle {
+  @include display-title;
+  margin: 0;
+  font-size: 1.875rem;
+}
+
+.notFoundText {
+  margin: 8px 0 24px;
+  color: $muted-foreground;
+  font-size: 0.875rem;
+}

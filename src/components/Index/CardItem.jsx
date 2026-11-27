@@ -1,10 +1,10 @@
 import { IonIcon } from '@ionic/react'
-import { star } from 'ionicons/icons'
+import { star, add } from 'ionicons/icons'
 import ProductArt from '../Shared/ProductArt'
 import { formatCOP } from '../../helpers/golshopData'
 import styles from './CardItem.module.scss'
 
-export default function CardItem({ product, index = 0, onOpen }) {
+export default function CardItem({ product, index = 0, onOpen, onAdd }) {
   return (
     <article
       className={styles.card}
@@ -24,6 +24,17 @@ export default function CardItem({ product, index = 0, onOpen }) {
         <h3 className={styles.name}>{product.name}</h3>
         <p className={styles.price}>{formatCOP(product.price)}</p>
       </div>
+      <button
+        type="button"
+        className={styles.add}
+        aria-label={`Agregar ${product.team} al carrito`}
+        onClick={(e) => {
+          e.stopPropagation()
+          onAdd?.(product)
+        }}
+      >
+        <IonIcon icon={add} />
+      </button>
     </article>
   )
 }

@@ -154,3 +154,9 @@ export const PRODUCTS = [
     art: { base: '#0B8A3E', secondary: '#FFFFFF', trim: '#0B8A3E', pattern: 'scarf' },
   },
 ]
+
+export const SHIPPING_COST = 12000
+export const FREE_SHIPPING_FROM = 400000
+
+export const shippingFor = (subtotal) =>
+  subtotal === 0 || subtotal >= FREE_SHIPPING_FROM ? 0 : SHIPPING_COST

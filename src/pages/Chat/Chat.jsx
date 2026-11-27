@@ -4,7 +4,7 @@ import Menu from '../../components/Shared/Menu'
 export default function Chat() {
   return (
     <IonPage>
-      <IonContent className="ion-padding">Chat (próximamente)</IonContent>
+      <IonContent className="ion-padding">Chat (prÃ³ximamente)</IonContent>
       <Menu />
     </IonPage>
   )

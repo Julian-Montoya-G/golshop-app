@@ -11,6 +11,7 @@ import {
   personOutline,
 } from 'ionicons/icons'
 import styles from './Menu.module.scss'
+import { useCart } from '../../hooks/useCart'
 
 const TABS = [
   { path: '/home', label: 'Inicio', icon: homeOutline, iconActive: home, match: ['/home', '/product'] },
@@ -28,6 +29,7 @@ const TABS = [
 export default function Menu() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const { cartCount } = useCart()
 
   return (
     <IonFooter className={`ion-no-border ${styles.footer}`}>
@@ -43,6 +45,9 @@ export default function Menu() {
             >
               <span className={styles.iconWrap}>
                 <IonIcon icon={active ? tab.iconActive : tab.icon} />
+                                {tab.path === '/cart' && cartCount > 0 && (
+                  <span className={styles.badge}>{cartCount}</span>
+                )}
               </span>
               {tab.label}
             </button>

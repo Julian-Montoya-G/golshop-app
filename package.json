@@ -16,6 +16,7 @@
     "@ionic/react": "^9.0.13",
     "@ionic/react-router": "^9.0.13",
     "dexie": "^4.4.7",
+    "dexie-react-hooks": "^4.4.0",
     "firebase": "^13.4.0",
     "ionicons": "^8.1.1",
     "react": "^19.3.1",

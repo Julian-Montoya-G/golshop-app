@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
-import { IonPage, IonContent, IonIcon } from '@ionic/react'
+import { IonPage, IonContent, IonIcon, useIonToast } from '@ionic/react'
+import { useNavigate } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 import {
   notificationsOutline,
   searchOutline,
@@ -34,6 +36,20 @@ function Chip({ active, onClick, gold = false, children }) {
 export default function Index() {
   const { user } = useAuth()
   const { products, loading, error } = useProducts()
+    const navigate = useNavigate()
+  const { addToCart } = useCart()
+  const [present] = useIonToast()
+
+  const handleAdd = (product) => {
+    const size = product.sizes.includes('M') ? 'M' : product.sizes[0]
+    addToCart(product.id, size)
+    present({
+      message: `${product.team} agregado al carrito · Talla ${size}`,
+      duration: 1800,
+      color: 'success',
+      position: 'top',
+    })
+  }
   const [query, setQuery] = useState('')
   const [team, setTeam] = useState('Todos')
   const [size, setSize] = useState(null)
@@ -119,7 +135,7 @@ export default function Index() {
         </div>
 
         {promo && team === 'Todos' && !query && !size && (
-          <div className={styles.promo}>
+            <div className={styles.promo} onClick={() => navigate(`/product/${promo.id}`)}>
             <div className={styles.promoText}>
               <p className={styles.promoKicker}>Mundial 2026</p>
               <p className={styles.promoOff}>15% OFF</p>
@@ -158,7 +174,13 @@ export default function Index() {
 
           <div className={styles.grid}>
             {filtered.map((p, i) => (
-              <CardItem key={p.id} product={p} index={i} />
+                            <CardItem
+                key={p.id}
+                product={p}
+                index={i}
+                onOpen={(prod) => navigate(`/product/${prod.id}`)}
+                onAdd={handleAdd}
+              />
             ))}
           </div>
         </section>
