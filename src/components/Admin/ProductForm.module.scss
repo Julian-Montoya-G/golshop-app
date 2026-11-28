@@ -1,0 +1,156 @@
+@use '../../styles/variables' as *;
+
+.modal {
+  --background: #{$card};
+  --border-radius: 32px 32px 0 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 20px 32px;
+}
+
+.title {
+  @include display-title;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.sub {
+  margin: -8px 0 0;
+  color: $muted-foreground;
+  font-size: 0.875rem;
+}
+
+.preview {
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 24px;
+  background: radial-gradient(90% 70% at 50% 35%, #22562c, $card);
+  box-sizing: border-box;
+}
+
+.palettes {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.swatch {
+  width: 36px;
+  height: 36px;
+  border: 2px solid $border;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.swatchOn {
+  border-color: $gold;
+  transform: scale(1.1);
+}
+
+.field {
+  display: block;
+
+  > span {
+    display: block;
+    margin-bottom: 6px;
+    color: $muted-foreground;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0 16px;
+    border: 1px solid $border;
+    border-radius: 16px;
+    background: $surface;
+    color: $foreground;
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+  }
+
+  input {
+    height: 48px;
+  }
+
+  textarea {
+    padding: 12px 16px;
+    resize: none;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  min-width: 48px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid $border;
+  border-radius: 999px;
+  background: $surface;
+  color: $muted-foreground;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chipOn {
+  border-color: transparent;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+}
+
+.error {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba($destructive, 0.15);
+  color: $destructive;
+  font-size: 0.875rem;
+}
+
+.submit {
+  height: 56px;
+  border: 0;
+  border-radius: 16px;
+  background: $gradient-pitch;
+  color: $primary-foreground;
+  box-shadow: $shadow-glow;
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
